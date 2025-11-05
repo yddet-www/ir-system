@@ -1,5 +1,8 @@
 from pathlib import Path
+from scrapy.linkextractors import LinkExtractor
+from urllib.parse import urlparse
 import scrapy
+import hashlib
 
 
 class WebSpider(scrapy.Spider):
@@ -10,7 +13,62 @@ class WebSpider(scrapy.Spider):
     default_url_file = "url.txt"
 
     # set default settings to spiders
-    custom_settings = {"DEPTH_LIMIT": 10, "CLOSESPIDER_PAGECOUNT": 5}
+    custom_settings = {
+        # recommended setting for large and diverse corpus
+        "DEPTH_LIMIT": 3,
+        "CLOSESPIDER_PAGECOUNT": 5000,
+        # autothrottle configs
+        "AUTOTHROTTLE_ENABLED": True,
+        "AUTOTHROTTLE_START_DELAY": 1,
+        "AUTOTHROTTLE_MAX_DELAY": 5,
+        "AUTOTHROTTLE_TARGET_CONCURRENCY": 1.5,
+        "CONCURRENT_REQUESTS": 16,
+        "CONCURRENT_REQUESTS_PER_DOMAIN": 2,
+        "ROBOTSTXT_OBEY": True,
+        # dont flood my terminal ty
+        # saving hash url mapping so windows dont fuck up the file saves
+        "FEEDS": {
+            "output/url_map.jsonl": {"format": "jsonlines"},
+        },
+    }
+
+    @staticmethod
+    def only_http_https(url: str):
+        scheme = urlparse(url).scheme.lower()
+        if scheme in {"", "http", "https"}:
+            return url
+        return None
+
+    # scrapy's link extractor
+    link_extractor = LinkExtractor(
+        process_value=only_http_https,
+        # non-exhaustive common patterns to avoid
+        deny=[
+            r"/user/",
+            r"/profile/",
+            r"/account/",
+            r"/login",
+            r"/register",
+            r"/signup",
+            r"\?action=",
+            r"/edit",
+            r"/delete",
+            r"/admin",
+            r"/tag/",
+            r"/category/",
+            r"/archive/",
+            r"/search",
+            r"/share",
+            r"/print",
+            r"/comment",
+            r"#comment",
+        ],
+        deny_extensions=["pdf", "zip", "gz", "tar", "7z", "rar"],  # Skip downloads
+        tags=["a"],
+        attrs=["href"],
+        canonicalize=True,  # might be redundant with the http/https filtering after reading into it more, keeping it either way
+        unique=True,
+    )
 
     def __init__(self, url_file=default_url_file, *args, **kwargs):
         super(WebSpider, self).__init__(*args, **kwargs)
@@ -18,7 +76,7 @@ class WebSpider(scrapy.Spider):
         url_fp = Path(url_file)
 
         if not url_fp.exists():
-            raise FileExistsError(f"URL file doesnt exist\n     {url_fp.absolute()}")
+            raise FileNotFoundError(f"URL file doesnt exist\n     {url_fp.absolute()}")
 
         print(f"INFO: Crawling URLs listed @ {url_fp.absolute()}")
 
@@ -31,21 +89,18 @@ class WebSpider(scrapy.Spider):
 
     def parse(self, response):
         self.log(f"Scraped URL @ {response.url}")
-        page = response.url.split("//")[1].replace("/", "-")[:-1]   # make filename look nice and actually informative
-        html_output_path = self.output_path / "html"
-        filename = f"{self.name}_{page}.html"
+        h = hashlib.sha256(response.url.encode("utf-8")).hexdigest()
 
-        # make HTML output directory if it dont exist
+        # save for mapping
+        yield {"hash": h, "url": response.url}
+
+        html_output_path = WebSpider.output_path / "html"
+        filename = f"{h}.html"
+
         Path(html_output_path).mkdir(parents=True, exist_ok=True)
-
         Path(html_output_path / filename).write_bytes(response.body)
         self.log(f"Saved file {filename}")
 
         # recurse into next pages
-        next_page = response.css("a")
-        yield from response.follow_all(next_page, callback=self.parse)
-
-        # if next_page is not None:
-        #     next_page = response.urljoin(next_page)
-
-        #     yield scrapy.Request(next_page, callback=self.parse)
+        links = self.link_extractor.extract_links(response)
+        yield from response.follow_all(links, callback=self.parse)
