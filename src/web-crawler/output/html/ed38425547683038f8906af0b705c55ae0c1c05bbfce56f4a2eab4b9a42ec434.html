@@ -1,0 +1,619 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head><title>
+	Contact Us | IARC
+</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="Questions about IARC or our mission? Contact us at info@globalratings.com." /><meta name="keywords" content="Contact IARC, Contact International Age Rating Coalition, questions about IARC" /><!-- Google tag (gtag.js) --> 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YL9GPMXR57"></script> 
+
+<script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-YL9GPMXR57'); </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47269577-1"></script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-47269577-1');
+</script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+	<script type='text/javascript'>
+
+		function langswitch()
+	{
+		var langSelect = document.getElementById('LangSelect');
+		var selectedLang = readCookie('language');
+	
+			if ((selectedLang == 'zh') || (selectedLang == 'en') || (selectedLang == 'de') 
+				|| (selectedLang == 'ja') || (selectedLang == 'ko') || (selectedLang == 'pt') 
+				|| (selectedLang == 'es')) {
+				$(".language select").val(selectedLang);
+			var sel = $(".language select").val(selectedLang);
+				if (selectedLang == 'zh') {
+				   $(".zh").css("display", "block");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='en') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "block"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='de') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "block"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='ja') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "block"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='ko') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "block"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='pt') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "block"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='es') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "block"); 
+				}
+			}
+
+			$(".language select").bind('change', function() {
+				setCookie('language', this.value, 365);
+				
+				var sel = $(".language select").val();
+				if (sel=='zh') {
+				   $(".zh").css("display", "block");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (sel=='en') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "block"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='de') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "block"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='ja') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "block"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='ko') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "block"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='pt') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "block"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='es') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "block");  
+				}
+			});
+	};
+
+	function saveLang(cookieValue)
+	{
+		var sel = document.getElementById('LangSelect');
+		setCookie('language', cookieValue, 365);
+	}
+
+	function setCookie(cookieName, cookieValue, nDays) {
+		var today = new Date();
+		var expire = new Date();
+
+		if (nDays==null || nDays==0)
+			nDays=1;
+
+		expire.setTime(today.getTime() + 3600000*24*nDays);
+		document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString();
+	}
+
+	function readCookie(name) {
+	  var nameEQ = name + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	  }
+	  return null;
+	}
+  
+	</script>
+   
+    <!-- CSS -->
+    <link href="jumbotron-narrow1.css" rel="stylesheet" /><link href="bootstrap1.min.css" rel="stylesheet" /><link href="esrb_iarc160523.css" rel="stylesheet" /></head>
+
+  <body onload="langswitch();">
+
+	
+
+    <div class="container">
+		
+		<div class="clearfix">
+		
+		<nav class="navbar navbar-default" style="background-color:#fff;">
+	<div class="container-fluid">
+        <div class="navbar-header">
+			
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a href="https://www.globalratings.com">
+			<img src="images/iarc_logo_menu.png" alt="IARC International Age Rating Coalition logo" title="IARC International Age Rating Coalition logo" class="mobilelogo menulogo floatl" /></a>
+			
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" alt="Australia Day Award logo" title="Australia Day Award logo" src="/images/australia-day-award-logo-sm.png" class="menulogo floatr" /></a>
+				</div>
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2015 Meffys Finalist logo" alt="2015 Meffys Finalist logo" src="images/meffys15finalist.png" class="menulogo floatr" /></a>
+				</div>	
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2015 e-Servicos P&uacute;blicos logo" alt="2015 e-Servicos P&uacute;blicos logo" src="images/e-servicos-publicos-logo-sm.png" class="menulogo floatr" /></a>
+				</div>	
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2016 Innovationspreis-IT Award logo" alt="2016 Innovationspreis-IT Award logo" src="images/innovationspreis-it-logo-sm.png" class="menulogo floatr" /></a>
+				</div>	
+		</div>
+		
+		<div class="navbar-collapse collapse" id="navbar" style="position:static;" >
+			<ul class="nav navbar-nav zh menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">&#38364;&#26044;IARC</a></li>
+				<li class="mobileview">|</li>				
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC &#30340;&#36939;&#20316;&#26041;&#24335;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#37341;&#23565;&#38283;&#30332;&#20154;&#21729;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#26032;&#32862;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#32879;&#32363;&#26041;&#24335;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav en menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">About IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">How IARC Works</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">For Developers</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">News</a></li>
+				<li class="mobileview">|</li>			
+				<li class="mobilemenu"><a href="/contact-us.aspx">Contact</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav de menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">&Uuml;BER IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">WIE IARC ARBEITET</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">F&Uuml;R ENTWICKLER</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">AKTUELLES</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">KONTAKT</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav ja menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">IARC&#12395;&#12388;&#12356;&#12390;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC&#12398;&#20181;&#32068;&#12415;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#38283;&#30330;&#32773;&#21521;&#12369;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#12491;&#12517;&#12540;&#12473;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#12362;&#21839;&#12356;&#21512;&#12431;&#12379;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav ko menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">IARC &#51221;&#48372;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC &#50868;&#50689; &#48169;&#49885;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#44060;&#48156;&#51088;&#47484; &#50948;&#54620; &#54017;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#45684;&#49828;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#50672;&#46973;&#52376;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav pt menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">SOBRE A IARC</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">COMO A IARC FUNCIONA</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">PARA DESENVOLVEDORES</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">NOT&Iacute;CIAS</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">CONTATO</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav es menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">ACERCA DE LA IARC</a></li>
+				<li class="mobileview">|</li>
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">C&Oacute;MO FUNCIONA LA IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">PARA LOS DESARROLLADORES</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">NOTICIAS</a></li>
+				<li class="mobileview">|</li>				
+				<li class="mobilemenu"><a href="/contact-us.aspx">CONTACTO</a></li>
+			</ul>
+			
+			
+		</div><!--/.nav-collapse -->
+	</div><!--/.container-fluid -->
+	<div class="mediacoverageremove">	
+		<div class="language">
+			<select id="select">
+				<option id="zh" value="zh">Chinese</option>
+				<option id="en" value="en" selected>English</option>
+				<option id="de" value="de">German</option>
+				<option id="ja" value="ja">Japanese</option>
+				<option id="ko" value="ko">Korean</option>
+				<option id="pt" value="pt">Portuguese</option>
+				<option id="es" value="es">Spanish</option>
+			</select>
+		</div>
+	</div>	
+	
+	<div class="modal fade" id="exitBumper" tabindex="-1" role="dialog" aria-labelledby="exitBumperLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title"><img src="https://www.globalratings.com/images/iarc_logo_menu.png" alt="IARC International Age Rating Coalition logo" class="img-responsive"></h5>
+		  </div>
+		  <div class="modal-body">
+			<p>You are leaving www.globalratings.com for a third-party site. The third-party site is subject to a different privacy policy, which we encourage you to review.</p>
+		  </div>
+		  <div class="modal-footer">
+		   <button type="button" class="btn btn-secondary btn-modal btn-cancel" data-dismiss="modal">Cancel</button>
+		   <button type="button" class="btn btn-primary btn-modal btn-proceed" data-dismiss="modal">Proceed</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</nav>
+
+<script type='text/javascript'>
+	$(window).on('load', function(){
+		
+		$.expr[":"].external = function(a) {		
+			var linkhn = a.hostname.split('.').reverse();
+			var linkHref = linkhn[1] + "." + linkhn[0];
+			
+			var domainhn = window.location.hostname.split('.').reverse();
+			var domainHref = domainhn[1] + "." + domainhn[0];
+		
+			return !a.href.match(/^mailto\:/) && !a.href.match(/^tel\:/) && linkHref !== domainHref;
+		};
+		
+		$("a:external").addClass("thirdpartylink");
+		
+		$(function() {
+			
+			$('a.thirdpartylink').click(function() {
+				 // open a modal 
+				$('a:external').attr('data-toggle', 'modal');
+				$('a:external').attr('data-target', '#exitBumper');
+				//go to link on modal close
+				var url = $(this).attr('href');
+				$('.btn-modal.btn-proceed').click(function() {
+					window.open(url);
+					$('.btn-modal.btn-proceed').off();
+				});
+				$('.btn-modal.btn-cancel').click(function() {
+					$('#exitBumper').modal('hide');
+					$('.btn-modal.btn-cancel').off();
+				}); 
+			});
+			
+		});  
+	});
+</script>	
+		
+		</div>
+
+
+	<div class="zh">
+	<div class="content2">&#32879;&#32363;&#26041;&#24335;</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>&#33287;IARC&#26377;&#38364;&#30340;&#30097;&#21839;&#25033;&#30070;&#34987;&#30332;&#36865;&#33267;&#65306; <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a>.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>&#33287;IARC&#20998;&#37197;&#30340;&#20855;&#39636;&#20998;&#32026;&#30456;&#38364;&#30340;&#30097;&#21839;&#12289;&#24847;&#35211;&#25110;&#25237;&#35380;&#25033;&#30070;&#34987;&#30332;&#36865;&#32102;&#30456;&#38364;&#20998;&#32026;&#27231;&#27083;&#65306;</h5>
+	</div>
+
+	
+	<div class="en">
+	<div class="content2">Contact Information</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>Questions related to IARC should be sent to: <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a>.</h5>
+		
+		<p>&nbsp;</p>
+		
+		<h5>If you choose to contact IARC, we will collect whatever personal information you include in your email to us (e.g., email address, name, etc.), which we will use to address your inquiry. Your personal information will be transferred to us in the United States. Protections for personal information may not be as robust in the United States as they are in your home country. By sending us your personal information, you consent to our collection and transfer of it to the United States.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>Questions, comments or complaints pertaining to specific IARC-assigned ratings should be directed to the appropriate rating authority:</h5>
+	</div>
+
+	<div class="de">
+	<div class="content2">KONTAKT</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>F&uuml;r Fragen zu IARC wenden Sie sich bitte an: <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a>.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>Bei Fragen, Kommentaren oder Beschwerden zu bestimmten IARC-Ratings wenden Sie sich bitte direkt an die entsprechende regional zust&auml;ndige Institution.</h5>
+	</div>
+
+	<div class="ja">
+	<div class="content2">&#12362;&#21839;&#12356;&#21512;&#12431;&#12379;</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>IARC&#12395;&#38306;&#36899;&#12377;&#12427;&#12372;&#36074;&#21839;&#12399; <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a> &#12414;&#12391;&#12372;&#36899;&#32097;&#12367;&#12384;&#12373;&#12356;&#12290;</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>IARC&#12364;&#21106;&#12426;&#24403;&#12390;&#12383;&#29305;&#23450;&#12398;&#35413;&#20385;&#12395;&#38306;&#12377;&#12427;&#12372;&#36074;&#21839;&#12289;&#12467;&#12513;&#12531;&#12488;&#12289;&#33510;&#24773;&#12399;&#12289;&#35442;&#24403;&#12377;&#12427;&#35413;&#20385;&#27231;&#38306;&#12395;&#12414;&#12391;&#30452;&#25509;&#12372;&#36899;&#32097;&#12367;&#12384;&#12373;&#12356;&#12290;</h5>
+	</div>
+
+	<div class="ko">
+	<div class="content2">&#50672;&#46973;&#52376;</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>IARC &#44288;&#47144; &#51656;&#47928;&#51008; <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a> &#51004;&#47196; &#47928;&#51032;&#54616;&#49901;&#49884;&#50724;.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>IARC &#46321;&#44553; &#54217;&#44032;&#50752; &#44288;&#47144;&#46108; &#51656;&#47928;, &#51032;&#44204; &#46608;&#45716; &#48520;&#47564; &#49324;&#54637;&#51008; &#44288;&#47144; &#46321;&#44553; &#54217;&#44032; &#44592;&#44288;&#50640; &#51649;&#51217; &#47928;&#51032;&#54644; &#51452;&#49901;&#49884;&#50724;.</h5>
+	</div>
+
+	<div class="pt">
+	<div class="content2">CONTATO</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>Perguntas relacionadas &agrave; institui&ccedil;&atilde;o IARC devem ser enviadas para: <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a>.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>Perguntas, coment&aacute;rios ou reclama&ccedil;&otilde;es relativas a classifica&ccedil;&otilde;es espec&iacute;ficas atribu&iacute;das por meio do sistema de classifica&ccedil;&atilde;o IARC devem ser direcionadas &agrave; autoridade de classifica&ccedil;&atilde;o apropriada:</h5>
+	</div>
+
+
+	<div class="es">
+	<div class="content2">CONTACTO</div>
+		
+		<p>&nbsp;</p>
+		
+		<h5>Las preguntas relacionadas con la IARC deben enviarse a: <a href="mailto:info@globalratings.com" class="hyperlinks">info@globalratings.com</a>.</h5>
+		
+		<p>&nbsp;</p>
+	 		
+		<h5>Las preguntas, los comentarios o las quejas relacionadas con calificaciones espec&iacute;ficas asignadas por la IARC deben ser dirigidas a la autoridad de calificaci&oacute;n correspondiente:</h5>
+	</div>
+					
+				<HR />
+						
+		<div class="rralist">
+				
+				<div class="rraleft">
+					<a href="http://www.classification.gov.au/About/Pages/Contact-Us.aspx" target="_blank">
+						<img border="0" src="/images/acb_logo-v2.png" class="logospacing" alt="Australian Classification Board logo" title="Australian Classification Board logo" border="0"/>
+					</a>	
+				</div>
+				<div class="rraright">
+						<a href="http://www.classification.gov.au/About/Pages/Contact-Us.aspx" target="_blank"><div class="copy fordevlinks">Australian Classification Board - Australia </div></a>
+				</div>
+		</div>
+							
+				<HR />
+				
+		<div class="rralist">	
+				<div class="rraleft">
+					<a href="https://www.gov.br/mj/pt-br/assuntos/seus-direitos/classificacao-1" target="_blank">
+						<img border="0" src="/images/classind_logo-v3.png" class="logospacing" alt="Classifica&ccedil;&atilde;o Indicativa ClassInd logo" title="Classifica&ccedil;&atilde;o Indicativa ClassInd logo" border="0"/>
+					</a>	
+				</div>
+				<div class="rraright">
+						<a href="https://www.gov.br/mj/pt-br/assuntos/seus-direitos/classificacao-1" target="_blank"><div class="copy fordevlinks">Classifica&ccedil;&atilde;o Indicativa (ClassInd) - Brazil </div></a>
+				</div>
+		</div>	
+				
+				<HR />
+				
+		<div class="rralist">	
+				<div class="rraleft">
+					<a href="https://www.gamerating.org.tw/" target="_blank">
+						<img border="0" src="/images/store-table/RAs/tca-dgsc-padded.png" 
+							class="logospacing" alt="Digital Game Self-regulation Committee logo"
+							title="Digital Game Self-regulation Committee logo" border="0"/>
+					</a>	
+				</div>
+				<div class="rraright">
+						<a href="https://www.gamerating.org.tw/" 
+							target="_blank"><div class="copy fordevlinks">Digital Game Self-regulation Committee - Taiwan </div></a>
+				</div>
+		</div>	
+				
+
+				<HR />
+				
+		<div class="rralist">
+					<div class="rraleft">
+						<a href="http://www.esrb.org/about/contact.jsp" target="_blank">
+							<img border="0" src="/images/esrb_logo-v2.png" class="logospacing" alt="Entertainment Software Rating Board ESRB logo" title="Entertainment Software Rating Board ESRB logo" border="0"/>
+						</a>	
+					</div>
+					<div class="rraright">
+						<a href="https://www.esrb.org/about/contact.jsp" target="_blank"><div class="copy fordevlinks">Entertainment Software Rating Board (ESRB) - North America </div></a>
+					</div>
+		</div>		
+
+				
+				<HR />
+				
+		<div class="rralist">
+					<div class="rraleft">
+						<a href="http://www.grac.or.kr/english/contact/contactGBR.aspx" target="_blank">
+							<img border="0" src="/images/grac_logo.png" class="logospacing" alt="Game Rating and Administration Committee GRAC logo" title="Game Rating and Administration Committee GRAC logo" border="0"/>
+						</a>	
+					</div>
+					<div class="rraright">
+						<a href="http://www.grac.or.kr/english/contact/contactGBR.aspx" target="_blank"><div class="copy fordevlinks">Game Rating and Administration Committee (GRAC) - Republic of Korea </div></a>
+					</div>
+		</div>			
+
+				<HR />				
+
+		<div class="rralist">
+					<div class="rraleft">
+						<a href="https://pegi.info/page/contact-us" target="_blank">
+							<img border="0" src="/images/pegi_logo-v2.png" alt="Pan European Game Information PEGI logo" title="Pan European Game Information PEGI logo" class="logospacing" border="0"/>
+						</a>	
+					</div>
+					<div class="rraright">
+						<a href="https://pegi.info/page/contact-us" target="_blank"><div class="copy fordevlinks">Pan European Game Information (PEGI) - Europe </div></a>
+					</div>
+		</div>	
+		
+				
+				<HR />
+				
+		<div class="rralist">
+					<div class="rraleft">
+						<a href="http://www.usk.de/en/extramenue/contact/" target="_blank">
+							<img border="0" src="/images/usk_logo-v2.png" alt="Unterhaltungssoftware Selbstkontrolle USK logo" title="Unterhaltungssoftware Selbstkontrolle USK logo" class="logospacing" border="0" />
+						</a>	
+					</div>
+					<div class="rraright">
+						<a href="http://www.usk.de/en/extramenue/contact/" target="_blank"><div class="copy fordevlinks">Unterhaltungssoftware Selbstkontrolle (USK) - Germany </div></a>
+					</div>
+		</div>
+
+			
+		<div class="clearfix">&nbsp;</div>
+		<div class="clearfix">&nbsp;</div>
+		
+		<div class="clearfix">
+		
+			<footer class="footer footeriarc">
+		<div class="col-sm-8"><p>&copy;Copyright 2025&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;IARC&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All Rights Reserved</p></div>
+        <div class="col-sm-4"><p><a href="privacy-policy.aspx" class="footeriarc">Privacy Policy</a></p></div>
+ </footer>
+			
+		</div>
+		
+
+    </div> <!-- /container -->
+
+    <script src="bootstrap.min.js"></script>
+	
+  </body>
+  
+  <script type='text/javascript'>(function() {
+
+    var iarcawards = $(".iarcawards");
+    var iarcawardIndex = -1;
+    
+    function showNextiarcAward() {
+        ++iarcawardIndex;
+        iarcawards.eq(iarcawardIndex % iarcawards.length)
+            .fadeIn(350)
+            .delay(5000)
+            .fadeOut(350, showNextiarcAward);
+    }
+    
+    showNextiarcAward();
+    
+})();</script>
+	
+</html>

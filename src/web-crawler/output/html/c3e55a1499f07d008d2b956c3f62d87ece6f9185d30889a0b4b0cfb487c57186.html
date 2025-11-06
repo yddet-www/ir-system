@@ -1,0 +1,920 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	How the International Age Rating Coalition Works | IARC
+</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="IARC streamlines the age rating process for your digitally delivered game or app. Find out how IARC works." /><meta name="keywords" content="How IARC works, rating certificate, game developers, age and content ratings, global ratings, international ratings, IARC explanation, IARC infographic" /><!-- Google tag (gtag.js) --> 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YL9GPMXR57"></script> 
+
+<script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-YL9GPMXR57'); </script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-47269577-1"></script>
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-47269577-1');
+</script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+		function langswitch()
+	{
+		var langSelect = document.getElementById('LangSelect');
+		var selectedLang = readCookie('language');
+	
+			if ((selectedLang == 'zh') || (selectedLang == 'en') || (selectedLang == 'de') 
+				|| (selectedLang == 'ja') || (selectedLang == 'ko') || (selectedLang == 'pt') 
+				|| (selectedLang == 'es')) {
+				$(".language select").val(selectedLang);
+			var sel = $(".language select").val(selectedLang);
+				if (selectedLang == 'zh') {
+				   $(".zh").css("display", "block");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='en') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "block"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='de') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "block"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='ja') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "block"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='ko') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "block"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='pt') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "block"); 
+				   $(".es").css("display", "none"); 
+				}else if (selectedLang =='es') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "block"); 
+				}
+			}
+
+			$(".language select").bind('change', function() {
+				setCookie('language', this.value, 365);
+				
+				var sel = $(".language select").val();
+				if (sel=='zh') {
+				   $(".zh").css("display", "block");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none"); 
+				}else if (sel=='en') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "block"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='de') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "block"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='ja') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "block"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='ko') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "block"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='pt') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "block"); 
+				   $(".es").css("display", "none");  
+				}else if (sel=='es') {
+				   $(".zh").css("display", "none");
+				   $(".en").css("display", "none"); 
+				   $(".de").css("display", "none"); 
+				   $(".ja").css("display", "none"); 
+				   $(".ko").css("display", "none"); 
+				   $(".pt").css("display", "none"); 
+				   $(".es").css("display", "block");  
+				}
+			});
+	};
+
+	function saveLang(cookieValue)
+	{
+		var sel = document.getElementById('LangSelect');
+		setCookie('language', cookieValue, 365);
+	}
+
+	function setCookie(cookieName, cookieValue, nDays) {
+		var today = new Date();
+		var expire = new Date();
+
+		if (nDays==null || nDays==0)
+			nDays=1;
+
+		expire.setTime(today.getTime() + 3600000*24*nDays);
+		document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString();
+	}
+
+	function readCookie(name) {
+	  var nameEQ = name + "=";
+	  var ca = document.cookie.split(';');
+	  for(var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+		if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+	  }
+	  return null;
+	}
+
+        function pageLoad() {
+            langswitch();
+            doResizeAllLanguagesToFit();
+        }
+
+    </script>
+
+    <!-- CSS -->
+    <link href="jumbotron-narrow1.css" rel="stylesheet" /><link href="bootstrap1.min.css" rel="stylesheet" /><link href="esrb_iarc160523.css" rel="stylesheet" /></head>
+
+<body onload="pageLoad();">
+
+    
+
+    <div class="container">
+
+        <div class="clearfix">
+
+            <nav class="navbar navbar-default" style="background-color:#fff;">
+	<div class="container-fluid">
+        <div class="navbar-header">
+			
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a href="https://www.globalratings.com">
+			<img src="images/iarc_logo_menu.png" alt="IARC International Age Rating Coalition logo" title="IARC International Age Rating Coalition logo" class="mobilelogo menulogo floatl" /></a>
+			
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" alt="Australia Day Award logo" title="Australia Day Award logo" src="/images/australia-day-award-logo-sm.png" class="menulogo floatr" /></a>
+				</div>
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2015 Meffys Finalist logo" alt="2015 Meffys Finalist logo" src="images/meffys15finalist.png" class="menulogo floatr" /></a>
+				</div>	
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2015 e-Servicos P&uacute;blicos logo" alt="2015 e-Servicos P&uacute;blicos logo" src="images/e-servicos-publicos-logo-sm.png" class="menulogo floatr" /></a>
+				</div>	
+				<div class="iarcawards">	
+					<a href="about.aspx#recognition">
+					<img border="0" title="2016 Innovationspreis-IT Award logo" alt="2016 Innovationspreis-IT Award logo" src="images/innovationspreis-it-logo-sm.png" class="menulogo floatr" /></a>
+				</div>	
+		</div>
+		
+		<div class="navbar-collapse collapse" id="navbar" style="position:static;" >
+			<ul class="nav navbar-nav zh menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">&#38364;&#26044;IARC</a></li>
+				<li class="mobileview">|</li>				
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC &#30340;&#36939;&#20316;&#26041;&#24335;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#37341;&#23565;&#38283;&#30332;&#20154;&#21729;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#26032;&#32862;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#32879;&#32363;&#26041;&#24335;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav en menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">About IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">How IARC Works</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">For Developers</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">News</a></li>
+				<li class="mobileview">|</li>			
+				<li class="mobilemenu"><a href="/contact-us.aspx">Contact</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav de menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">&Uuml;BER IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">WIE IARC ARBEITET</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">F&Uuml;R ENTWICKLER</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">AKTUELLES</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">KONTAKT</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav ja menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">IARC&#12395;&#12388;&#12356;&#12390;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC&#12398;&#20181;&#32068;&#12415;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#38283;&#30330;&#32773;&#21521;&#12369;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#12491;&#12517;&#12540;&#12473;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#12362;&#21839;&#12356;&#21512;&#12431;&#12379;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav ko menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">IARC &#51221;&#48372;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">IARC &#50868;&#50689; &#48169;&#49885;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">&#44060;&#48156;&#51088;&#47484; &#50948;&#54620; &#54017;</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">&#45684;&#49828;</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">&#50672;&#46973;&#52376;</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav pt menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">SOBRE A IARC</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">COMO A IARC FUNCIONA</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">PARA DESENVOLVEDORES</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">NOT&Iacute;CIAS</a></li>
+				<li class="mobileview">|</li>					
+				<li class="mobilemenu"><a href="/contact-us.aspx">CONTATO</a></li>
+			</ul>
+			
+			<ul class="nav navbar-nav es menulinks">
+				<li class="mobilemenu"><a href="/about.aspx">ACERCA DE LA IARC</a></li>
+				<li class="mobileview">|</li>
+				<li class="mobilemenu"><a href="/how-iarc-works.aspx">C&Oacute;MO FUNCIONA LA IARC</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/for-developers.aspx">PARA LOS DESARROLLADORES</a></li>
+				<li class="mobileview">|</li>	
+				<li class="mobilemenu"><a href="/news.aspx">NOTICIAS</a></li>
+				<li class="mobileview">|</li>				
+				<li class="mobilemenu"><a href="/contact-us.aspx">CONTACTO</a></li>
+			</ul>
+			
+			
+		</div><!--/.nav-collapse -->
+	</div><!--/.container-fluid -->
+	<div class="mediacoverageremove">	
+		<div class="language">
+			<select id="select">
+				<option id="zh" value="zh">Chinese</option>
+				<option id="en" value="en" selected>English</option>
+				<option id="de" value="de">German</option>
+				<option id="ja" value="ja">Japanese</option>
+				<option id="ko" value="ko">Korean</option>
+				<option id="pt" value="pt">Portuguese</option>
+				<option id="es" value="es">Spanish</option>
+			</select>
+		</div>
+	</div>	
+	
+	<div class="modal fade" id="exitBumper" tabindex="-1" role="dialog" aria-labelledby="exitBumperLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title"><img src="https://www.globalratings.com/images/iarc_logo_menu.png" alt="IARC International Age Rating Coalition logo" class="img-responsive"></h5>
+		  </div>
+		  <div class="modal-body">
+			<p>You are leaving www.globalratings.com for a third-party site. The third-party site is subject to a different privacy policy, which we encourage you to review.</p>
+		  </div>
+		  <div class="modal-footer">
+		   <button type="button" class="btn btn-secondary btn-modal btn-cancel" data-dismiss="modal">Cancel</button>
+		   <button type="button" class="btn btn-primary btn-modal btn-proceed" data-dismiss="modal">Proceed</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</nav>
+
+<script type='text/javascript'>
+	$(window).on('load', function(){
+		
+		$.expr[":"].external = function(a) {		
+			var linkhn = a.hostname.split('.').reverse();
+			var linkHref = linkhn[1] + "." + linkhn[0];
+			
+			var domainhn = window.location.hostname.split('.').reverse();
+			var domainHref = domainhn[1] + "." + domainhn[0];
+		
+			return !a.href.match(/^mailto\:/) && !a.href.match(/^tel\:/) && linkHref !== domainHref;
+		};
+		
+		$("a:external").addClass("thirdpartylink");
+		
+		$(function() {
+			
+			$('a.thirdpartylink').click(function() {
+				 // open a modal 
+				$('a:external').attr('data-toggle', 'modal');
+				$('a:external').attr('data-target', '#exitBumper');
+				//go to link on modal close
+				var url = $(this).attr('href');
+				$('.btn-modal.btn-proceed').click(function() {
+					window.open(url);
+					$('.btn-modal.btn-proceed').off();
+				});
+				$('.btn-modal.btn-cancel').click(function() {
+					$('#exitBumper').modal('hide');
+					$('.btn-modal.btn-cancel').off();
+				}); 
+			});
+			
+		});  
+	});
+</script>	
+
+        </div>
+
+        <div class="content2 zh">IARC 如何運作</div>
+        <div class="content2 en">HOW IARC WORKS</div>
+        <div class="content2 de">Funktionsweise von IARC</div>
+        <div class="content2 ja">IARC によるレーティングのしくみ</div>
+        <div class="content2 ko">IARC 운영 방식</div>
+        <div class="content2 pt">Como o IARC funciona</div>
+        <div class="content2 es">¿Cómo funciona IARC?</div>
+
+        <!--CHINESE-->
+        <div class="zh objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_zh" class="main_image_absolute_container">
+                    <div class="itemszh item_1">
+                        <p><strong>創建了一個新的應用程式或數位遊戲。</strong></p>
+                        <p>開發者準備將其提交給參與的IARC 店面。</p>
+                    </div>
+
+                    <div class="itemszh item_2">
+                        <p><strong>要求開發者完成 IARC 調查問卷以獲得評級。</strong></p>
+
+                        <p><span class="howiarcworkstext">問卷完成後，IARC 會按地區分配適當的</span> 年齡分級 <span class="howiarcworkstext">和內</span> 容描述。</p>
+
+                        <p>
+                            <span class="howiarcworkstext">互動元素</span> 是普遍分配的，提供關於遊戲內購買（包
+									括隨機購買）、與其他用戶互動、分享用戶的位置
+									和訪問互聯網的能力的通知。
+                        </p>
+                    </div>
+
+                    <div class="itemszh item_3">
+                        <p><strong>店面攝取並映射區域評級以顯示給使用者。</strong></p>
+
+                        <p>
+                            使用者可以查看熟悉和信任並反映當地文化
+									規範的遊戲和應用程式的區域評級。
+                        </p>
+                    </div>
+
+                    <div class="itemszh item_4">
+                        <p><strong>IARC 評級機構監控分配給遊戲和應用程式的評級以確保準確性。</strong></p>
+
+                        <p>如有需要，店面會立即實施更正。</p>
+                    </div>
+
+                    <div class="itemszh item_5">
+                        <p>
+                            <strong>開發者在其他 IARC 店面發佈他們的遊戲或應用程式時可以
+									使用他們的 IARC 評級證書 ID。</strong>
+                        </p>
+
+                        <p>
+                            開發者只需完成一次IARC調查問卷。其他IARC店面將能夠
+									使用IARC證書ID訪問所有遊戲或應用程式的評級資訊。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ENGLISH-->
+        <div class="en objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_en" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p><strong>A new app or digital game is created.</strong></p>
+                        <p>Developer prepares to submit it to a participating IARC storefront.</p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p><strong>Developer is asked to complete the IARC questionnaire to obtain ratings.</strong></p>
+
+                        <p>Once the questionnaire is completed, IARC assigns the appropriate <span class="howiarcworkstext">Age Rating</span> and <span class="howiarcworkstext">Content Descriptors</span> by region.</p>
+
+                        <p><span class="howiarcworkstext">Interactive Elements</span> are assigned universally, providing notice about the ability to make in-game purchases (including randomized ones), interact with other users, share users’ location, and access the Internet.</p>
+
+                    </div>
+
+                    <div class="items item_3">
+                        <p><strong>Storefront ingests and maps regional ratings for display to users.</strong></p>
+
+                        <p>Users can view regional ratings for games and apps that are familiar and trusted and reflect local cultural norms.</p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p><strong>IARC rating authorities monitor ratings assigned to games and apps to ensure accuracy.</strong></p>
+
+                        <p>Corrections, if needed, are implemented promptly by storefronts.</p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p><strong>Developer can use their IARC rating certificate ID when publishing their game or app on other IARC storefronts.</strong></p>
+
+                        <p>Developers only have to complete the IARC questionnaire once. Other IARC storefronts will be able to access all of the game or app rating information using the IARC certificate ID.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--GERMAN-->
+        <div class="de objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_de" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p>
+                            <strong>Eine neue App oder ein neues digitales Spiel wird geschaffen.</strong>
+                        </p>
+                        <p>
+                            Der Entwickler bereitet die Einreichung bei einer teilnehmenden IARC-Storefront vor.
+                        </p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p>
+                            <strong>Der Entwickler füllt den IARC-Fragebogen aus, um Einstufungen zu erhalten.</strong>
+                        </p>
+
+                        <p>
+                            Wurde der Fragebogen ausgefüllt, vergibt IARC die nach Region passenden <span class="howiarcworkstext">Alterskennzeichen</span> und <span class="howiarcworkstext">Inhaltsdeskriptoren.</span>
+                        </p>
+
+                        <p>
+                            Zudem werden global <span class="howiarcworkstext">Deskriptoren zu Zusatzfunktionen</span> vergeben, die darüber Auskunft geben, ob in der App (randomisierte) Käufe, Interaktionen mit anderen Nutzern, Standortfreigaben und Zugriff auf das Internet möglich sind.
+                        </p>
+
+                    </div>
+
+                    <div class="items item_3">
+                        <p>
+                            <strong>Die Storefronts zeigen die regional gültigen Kennzeichen an.</strong>
+                        </p>
+
+                        <p>
+                            Die Nutzer sehen regionale Einstufungen für Spiele und Apps, die vertraut und gewohnt sind und den jeweiligen Jugendschutzstandards entsprechen.
+                        </p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p>
+                            <strong>Regional zuständige Institutionen überwachen das System und stellen die Richtigkeit der Kennzeichen sicher.</strong>
+                        </p>
+
+                        <p>
+                            Sind Korrekturen nötig, erfolgen diese umgehend durch die Storefronts.
+                        </p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p>
+                            <strong>Entwickler können ihr IARC-Einstufungs-Zertifikat verwenden, wenn sie ihr Spiel oder ihre App in anderen IARC-Storefronts veröffentlichen.</strong>
+                        </p>
+
+                        <p>
+                            Entwickler müssen den IARC-Fragebogen nur einmal ausfüllen. Weitere IARC-Storefronts haben mittels des IARC-Zertifikats Zugriff auf sämtliche Einstufungsinformationen eines Spiels oder einer App.   
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--JAPANESE-->
+        <div class="ja objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_ja" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p><strong>新しいアプリやデジタルゲームが作られると.</strong></p>
+                        <p>
+                            デベロッパーは所属先のIARCストアフロントに提出
+									資料を準備します。
+                        </p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p>
+                            <strong>デベロッパーはレーティングの取得に向けたIARCの質問
+									表に答えるよう求められます。</strong>
+                        </p>
+
+                        <p>
+                            質問表を完成すると、IARCから地域ごとに適切な <span class="howiarcworkstext">年齢評
+									価と コンテンツディスクリプタ</span> ーが割り当てられます。 <
+                        </p>
+
+                        <p>
+                            <span class="howiarcworkstext">インタラクティブな要素</span> の割当は必ず行われますが、これ
+									はゲーム内課金（ランダムなものを含む）、ユーザー同士の
+									やりとり、ユーザーの位置情報共有、インターネットへのア
+									クセスといった機能について通知するものです。
+                        </p>
+
+                    </div>
+
+                    <div class="items item_3">
+                        <p>
+                            <strong>ストアフロントは、ユーザー向けの表示を行うた
+									め、地域ごとの評価に即して分類を行います。</strong>
+                        </p>
+
+                        <p>
+                            ユーザーは、身近で信頼性の高い、地域の文化
+									的規範に沿ったゲームやアプリの評価を地域ご
+									とに見ることができます。
+                        </p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p>
+                            <strong>IARCは、評価機関としてゲームやアプリに付与されたレーティング
+									の制度を監視します。</strong>
+                        </p>
+
+                        <p>修正については、ストアフロントが必要に応じて迅速に行います。</p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p>
+                            <strong>デベロッパーは、IARCレーティング証明IDを使用して他のIARC
+									ストアフロントでゲームやアプリを販売できます。</strong>
+                        </p>
+
+                        <p>
+                            デベロッパーによるIARCの調査票への回答義務は一度のみです。
+									他のIARCストアフロントは、IARC証明IDを使用してゲームやアプ
+									リに関するあらゆる評価情報にアクセスすることが可能です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--KOREAN-->
+        <div class="ko objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_ko" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p><strong>새로운 앱이나 디지털 게임이 제작됩니다.</strong></p>
+                        <p>
+                            개발자가 IARC 스토어에 해당 제품을 제출할 준비를
+									합니다.
+                        </p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p><strong>개발자는 등급 산출을 위해 IARC 설문지에 응답합니다.</strong></p>
+
+                        <p>설문지 응답이 완료되면, IARC는 해당 제품에 권역별 적정 <span class="howiarcworkstext">연령 등급 및 내용정보를</span> 부여합니다.</p>
+
+                        <p>
+                            <span class="howiarcworkstext">사용자 상호작용요소는</span> 게임 내 구매(랜덤 구매 포함), 다른
+									사용자와의 상호 작용, 사용자 위치 공유 및 인터넷 접근 기능
+									여부를 안내합니다.
+                        </p>
+                    </div>
+
+                    <div class="items item_3">
+                        <p>
+                            <strong>스토어는 등급 정보를 수집하여 권역별 사용자
+									에게 보여줍니다.</strong>
+                        </p>
+
+                        <p>
+                            사용자는 현지 기준이 반영된 친숙하고 신뢰도
+									높은 등급 정보를 확인할 수 있습니다.
+                        </p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p>
+                            <strong>각 등급분류기관은 게임과 앱의 등급 적정성 확보를 위해 모니터링을
+									실시합니다.</strong>
+                        </p>
+
+                        <p>등급 수정이 필요한 경우, 스토어는 신속하게 조치를 취합니다.</p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p>
+                            <strong>개발자는 IARC 인증 ID를 통해 다른 IARC 스토어에서도 게임이나
+									앱을 유통할 수 있습니다.</strong>
+                        </p>
+
+                        <p>
+                            개발자는 IARC 설문지에 한 번만 응답하면 됩니다. IARC 인증 ID
+									를 활용하여 다른 IARC 스토어에서도 모든 게임과 앱에 대한 등급
+									정보를 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--PORTUGUESE-->
+        <div class="pt objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_pt" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p><strong>Um novo app ou jogo digital foi criado.</strong></p>
+                        <p>
+                            O desenvolvedor se prepara para apresentá-lo a
+									uma loja participante do IARC.
+                        </p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p>
+                            <strong>O desenvolvedor é solicitado a preencher o
+									questionário IARC para obter classificações.</strong>
+                        </p>
+
+                        <p>
+                            Quando o questionário estiver preenchido, o IARC
+									atribui a <span class="howiarcworkstext">Classificação Etária</span> apropriada e os
+									Descritores de Conteúdo por região.
+                        </p>
+
+                        <p>
+                            <span class="howiarcworkstext">Elementos Interativos</span> são atribuídos universalmente,
+									fornecendo aviso sobre a habilidade de fazer
+									compras dentro do jogo (incluindo randomizadas),
+									interagir com outros usuários, compartilhar
+									localização do usuário e acessar a Internet.
+                        </p>
+
+                    </div>
+
+                    <div class="items item_3">
+                        <p>
+                            <strong>A loja recebe e mapeia as classificações
+									regionais a serem visualizadas pelos
+									usuários.</strong>
+                        </p>
+
+                        <p>
+                            Os usuários podem visualizar classificações
+									por região para jogos e apps que são
+									familiares e confiáveis e refletem as normas
+									culturais locais.
+                        </p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p>
+                            <strong>As autoridades de classificação do IARC monitoram as
+									classificações atribuídas para assegurar precisão.</strong>
+                        </p>
+
+                        <p>
+                            Quando necessário, correções são implementadas prontamente
+									pelas lojas.
+                        </p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p>
+                            <strong>O desenvolvedor pode usar a identidade (ID) de seu
+									certificado de classificação IARC quando publicar seu
+									jogo ou app em outras lojas IARC.</strong>
+                        </p>
+
+                        <p>
+                            Os desenvolvedores precisam completar o questionário
+									IARC somente uma vez. Outras lojas IARC poderão
+									acessar todas as informações de classificação do jogo
+									ou app usando a ID do certificado IARC.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--SPANISH-->
+        <div class="es objectfit">
+            <div class="main_image_relative_container">
+                <div id="element_to_scale_es" class="main_image_absolute_container">
+                    <div class="items item_1">
+                        <p><strong>Se crea una nueva aplicación o juego digital.</strong></p>
+                        <p>
+                            El desarrollador lo envía a una tienda IARC que
+									participe del programa.
+                        </p>
+                    </div>
+
+                    <div class="items item_2">
+                        <p>
+                            <strong>Se solicita al desarrollador que complete el
+									cuestionario de IARC para poder recibir calificaciones.</strong>
+                        </p>
+
+                        <p>Cuando el cuestionario está listo, IARC asigna la <span class="howiarcworkstext">categorías de clasificación</span> y los <span class="howiarcworkstext">descriptores de contenido</span> correspondientes por región.</p>
+
+                        <p>
+                            <span class="howiarcworkstext">Los Elementos interactivos</span> se asignan universalmente,
+									proporcionan un aviso sobre la capacidad de realizar
+									compras dentro del juego (incluye articulos aleatorios),
+									de interacción de usuarios, ubicación compartida e internet sin límites.
+                        </p>
+
+                    </div>
+
+                    <div class="items item_3">
+                        <p>
+                            <strong>La tienda toma y asigna las clasificaciones
+									regionales para luego poder mostrárselas
+									a los usuarios.</strong>
+                        </p>
+
+                        <p>
+                            Los usuarios podrán ver clasificaciones
+									regionales para los juegos y aplicaciones, las cuales 
+									son familiares, confiables y
+									reflejan las normas culturales locales.
+                        </p>
+                    </div>
+
+                    <div class="items item_4">
+                        <p>
+                            <strong>Las autoridades de calificación de IARC monitorean las
+									calificaciones asignadas a los juegos y aplicaciones para
+									garantizar que sean precisas.</strong>
+                        </p>
+
+                        <p>
+                            De ser necesario, las correcciones se implementan rápidamente
+									en las tiendas.
+                        </p>
+                    </div>
+
+                    <div class="items item_5">
+                        <p>
+                            <strong>El desarrollador puede usar su ID de certificado de
+									calificación IARC al publicar su juego o aplicación en otras
+									tiendas IARC.</strong>
+                        </p>
+
+                        <p>
+                            Los desarrolladores solo deberán completar el cuestionario
+									de IARC una vez. El resto de las tiendas de IARC podrán
+									acceder a toda la información de clasificación de juegos o
+									aplicaciones utilizando el ID del certificado de IARC.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix">
+
+            <footer class="footer footeriarc">
+		<div class="col-sm-8"><p>&copy;Copyright 2025&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;IARC&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All Rights Reserved</p></div>
+        <div class="col-sm-4"><p><a href="privacy-policy.aspx" class="footeriarc">Privacy Policy</a></p></div>
+ </footer>
+
+        </div>
+
+
+    </div>
+    <!-- /container -->
+
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+
+</body>
+
+<script type="text/javascript">function doResizeAllLanguagesToFit() {
+    doResize(document.getElementById('element_to_scale_zh'));
+    doResize(document.getElementById('element_to_scale_en'));
+    doResize(document.getElementById('element_to_scale_de'));
+    doResize(document.getElementById('element_to_scale_ja'));
+    doResize(document.getElementById('element_to_scale_ko'));
+    doResize(document.getElementById('element_to_scale_pt'));
+    doResize(document.getElementById('element_to_scale_es'));
+}
+
+function doResize(theElement) {
+    requestAnimationFrame(function fitToParentOnResize() {
+        fitToParent(theElement);
+    });
+}
+
+function scaleAmountNeededToFit(el) {
+    const parentSize = {
+        width: el.parentElement.clientWidth,
+        height: el.parentElement.clientHeight
+    };
+
+    return Math.min(parentSize.width / el.clientWidth,
+        parentSize.height / el.clientHeight);
+}
+
+function fitToParent(element) {
+    const scale = scaleAmountNeededToFit(element);
+    element.style.transformOrigin = "0 0";
+    element.style.transform = `translate(0px, 0px) scale(${scale})`;
+}
+
+$(document).ready(function () {
+    $("select").change(function () {
+        location.reload();
+    });
+});
+
+$(window).resize(function () {
+    doResizeAllLanguagesToFit();
+});
+
+
+</script>
+<script type="text/javascript">(function() {
+
+    var iarcawards = $(".iarcawards");
+    var iarcawardIndex = -1;
+    
+    function showNextiarcAward() {
+        ++iarcawardIndex;
+        iarcawards.eq(iarcawardIndex % iarcawards.length)
+            .fadeIn(350)
+            .delay(5000)
+            .fadeOut(350, showNextiarcAward);
+    }
+    
+    showNextiarcAward();
+    
+})();</script>
+
+</html>

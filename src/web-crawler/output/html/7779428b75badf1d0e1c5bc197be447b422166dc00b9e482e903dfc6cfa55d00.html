@@ -1,0 +1,83 @@
+<!doctype html><html><head><script>var AccountSettingsProperties = {cookieConsentEnabled: true,arkosePublicKey: "9C3260E3-AD4C-6719-E0A9-56D21BFB0BCD",arkoseLabsEnabled: true,region: "US"};</script><script>var BlzCookieConsent = {host: 'battle.net', allowlistedCookies: ['[]']};</script><script src="https://bnetaccount.akamaized.net/static/js/cookie-consent-filter.js"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-589KTQ');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" sizes="16x16" href="https://bnetaccount.akamaized.net/static/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="https://bnetaccount.akamaized.net/static/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="https://bnetaccount.akamaized.net/static/images/favicon-96x96.png"><script id="base-nav-top-js" src="https://navbar.blizzard.com/static/v1/nav-battlenet.js" async></script><script id="base-nav-footer-js" src="https://navbar.blizzard.com/static/v1/footer.js" async></script><title></title><script defer src="https://bnetaccount.akamaized.net/static/js/app.dd37edd144944f164aac.js"></script><link href="https://bnetaccount.akamaized.net/static/css/app.676ac2a8dc44de80fc7d.css" rel="stylesheet"></head><body><noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-589KTQ" height="0" width="0" style="display:none;visibility:hidden"&gt;</noscript><div id="app"></div><div class="loading-overlay"></div><script>"use strict";
+      !(function (n) {
+        var o = "/api/error-report";
+        function t(e, r, n) {
+          void 0 !== r[n] && (e[n] = r[n]);
+        }
+        function a() {
+          var e, r;
+          return {
+            system: (function () {
+              var e = {};
+              e.clientTimeMillis = Date.now();
+              var r = n.navigator;
+              return (
+                t(e, r, "oscpu"),
+                t(e, r, "hardwareConcurrency"),
+                t(e, r, "deviceMemory"),
+                e
+              );
+            })(),
+            network:
+              ((e = {}),
+              void 0 !== (r = n.navigator.connection) &&
+                (t(e, r, "downlink"),
+                t(e, r, "downlinkMax"),
+                t(e, r, "effectiveType"),
+                t(e, r, "rtt"),
+                t(e, r, "type")),
+              e),
+            browser: (function () {
+              var e = {};
+              t(e, n && n.location, "href"),
+                t(e, n, "devicePixelRatio"),
+                t(e, n, "innerHeight"),
+                t(e, n, "innerWidth");
+              var r = n.navigator;
+              return (
+                t(e, r, "platform"),
+                t(e, r, "userAgent"),
+                t(e, r, "language"),
+                t(e, r, "cookieEnabled"),
+                e
+              );
+            })(),
+          };
+        }
+        function e(e, r, n, o, t) {
+          var i = function (e, r, n, o, t) {
+            return { message: e, source: r, lineno: n, colno: o };
+          }.apply(void 0, arguments);
+          c({ environment: a(), error: i }), console.error(t);
+        }
+        function c(e) {
+          console.info("An error occurred. Submitting report.");
+          var r = new XMLHttpRequest();
+          r.open("POST", o),
+            r.setRequestHeader("Content-Type", "application/json"),
+            r.setRequestHeader("Accept", "application/json");
+          var n = document.cookie.match(new RegExp("XSRF-TOKEN=([^;]+)"));
+          n && n.length && r.setRequestHeader("X-XSRF-TOKEN", n[1]),
+            r.addEventListener("error", function (e) {
+              console.error(
+                "An error occurred while sending an error-report. Error: " + e
+              );
+            }),
+            r.send(JSON.stringify(e));
+        }
+        void 0 !== n
+          ? ((n.onerror = e),
+            (n.errorReporter = {
+              global: e,
+              vue: function (e, r, n) {
+                var o = function (e, r, n) {
+                  return { stack: e.stack };
+                }.apply(void 0, arguments);
+                c({ environment: a(), vueError: o }), console.error(e);
+              },
+            }),
+            console.debug("Listening for unhandled errors..."))
+          : console.error(
+              'Unable to bind onError listener as "window" was undefined.'
+            );
+      })(window);</script></body></html>
