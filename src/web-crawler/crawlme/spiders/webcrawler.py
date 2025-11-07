@@ -2,7 +2,7 @@ from pathlib import Path
 from scrapy.linkextractors import LinkExtractor
 from urllib.parse import urlparse
 import scrapy
-import hashlib
+import uuid
 
 
 class WebSpider(scrapy.Spider):
@@ -89,13 +89,13 @@ class WebSpider(scrapy.Spider):
 
     def parse(self, response):
         self.log(f"Scraped URL @ {response.url}")
-        h = hashlib.sha256(response.url.encode("utf-8")).hexdigest()
+        docID = str(uuid.uuid5(uuid.NAMESPACE_URL, response.url))
 
         # save for mapping
-        yield {"hash": h, "url": response.url}
+        yield {"docID": docID, "url": response.url}
 
         html_output_path = WebSpider.output_path / "html"
-        filename = f"{h}.html"
+        filename = f"{docID}.html"
 
         Path(html_output_path).mkdir(parents=True, exist_ok=True)
         Path(html_output_path / filename).write_bytes(response.body)
