@@ -1,4 +1,5 @@
 # My ignores
+.*
 src/web-crawler/output/
 
 # Byte-compiled / optimized / DLL files
