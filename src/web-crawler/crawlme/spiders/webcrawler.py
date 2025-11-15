@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Any
 from scrapy.linkextractors import LinkExtractor
 from urllib.parse import urlparse
 import scrapy
@@ -9,15 +10,12 @@ class WebSpider(scrapy.Spider):
     name = "webcrawler"
 
     # default paths
-    output_path = Path("output")
+    default_output_path = "output"
     default_url_file = "url.txt"
 
-    # set default settings to spiders
-    custom_settings = {
-        # recommended setting for large and diverse corpus
+    custom_settings: dict[str, Any] = {
         "DEPTH_LIMIT": 3,
         "CLOSESPIDER_PAGECOUNT": 5000,
-        # autothrottle configs
         "AUTOTHROTTLE_ENABLED": True,
         "AUTOTHROTTLE_START_DELAY": 1,
         "AUTOTHROTTLE_MAX_DELAY": 5,
@@ -25,11 +23,6 @@ class WebSpider(scrapy.Spider):
         "CONCURRENT_REQUESTS": 16,
         "CONCURRENT_REQUESTS_PER_DOMAIN": 2,
         "ROBOTSTXT_OBEY": True,
-        # dont flood my terminal ty
-        # saving hash url mapping so windows dont fuck up the file saves
-        "FEEDS": {
-            "output/url_map.jsonl": {"format": "jsonlines"},
-        },
     }
 
     @staticmethod
@@ -39,10 +32,8 @@ class WebSpider(scrapy.Spider):
             return url
         return None
 
-    # scrapy's link extractor
     link_extractor = LinkExtractor(
         process_value=only_http_https,
-        # non-exhaustive common patterns to avoid
         deny=[
             r"/user/",
             r"/profile/",
@@ -63,27 +54,47 @@ class WebSpider(scrapy.Spider):
             r"/comment",
             r"#comment",
         ],
-        deny_extensions=["pdf", "zip", "gz", "tar", "7z", "rar"],  # Skip downloads
+        deny_extensions=["pdf", "zip", "gz", "tar", "7z", "rar"],
         tags=["a"],
         attrs=["href"],
-        canonicalize=True,  # might be redundant with the http/https filtering after reading into it more, keeping it either way
+        canonicalize=True,
         unique=True,
     )
 
-    def __init__(self, url_file=default_url_file, *args, **kwargs):
-        super(WebSpider, self).__init__(*args, **kwargs)
+    @classmethod
+    def from_crawler(cls, crawler, *args, **kwargs):
+        output_path_arg = kwargs.get("output_path", cls.default_output_path)
+        output_path = Path(output_path_arg)
+
+        feeds = {
+            str(output_path / "url_map.jsonl"): {"format": "jsonlines"},
+        }
+        crawler.settings.set("FEEDS", feeds, priority="spider")
+
+        spider = super().from_crawler(crawler, *args, **kwargs)
+        return spider
+
+    def __init__(
+        self,
+        url_file: str = default_url_file,
+        output_path: str = default_output_path,
+        *args,
+        **kwargs,
+    ):
+        super().__init__(*args, **kwargs)
+
+        self.output_path = Path(output_path)
 
         url_fp = Path(url_file)
-
         if not url_fp.exists():
             raise FileNotFoundError(f"URL file doesnt exist\n     {url_fp.absolute()}")
 
-        print(f"INFO: Crawling URLs listed @ {url_fp.absolute()}")
+        self.logger.info(f"Crawling URLs listed @ {url_fp.absolute()}")
 
         with open(url_fp) as file:
-            self.url_list = [line.rstrip() for line in file]
+            self.url_list = [line.rstrip() for line in file if line.strip()]
 
-    async def start(self):
+    def start_requests(self):
         for url in self.url_list:
             yield scrapy.Request(url=url, callback=self.parse)
 
@@ -91,16 +102,15 @@ class WebSpider(scrapy.Spider):
         self.log(f"Scraped URL @ {response.url}")
         docID = str(uuid.uuid5(uuid.NAMESPACE_URL, response.url))
 
-        # save for mapping
+        # save for mapping (goes into url_map.jsonl)
         yield {"docID": docID, "url": response.url}
 
-        html_output_path = WebSpider.output_path / "html"
+        html_output_path = self.output_path / "html"
         filename = f"{docID}.html"
 
-        Path(html_output_path).mkdir(parents=True, exist_ok=True)
-        Path(html_output_path / filename).write_bytes(response.body)
+        html_output_path.mkdir(parents=True, exist_ok=True)
+        (html_output_path / filename).write_bytes(response.body)
         self.log(f"Saved file {filename}")
 
-        # recurse into next pages
         links = self.link_extractor.extract_links(response)
         yield from response.follow_all(links, callback=self.parse)
