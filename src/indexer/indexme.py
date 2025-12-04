@@ -1,9 +1,12 @@
 import json
 from typing import Any
-from src.util.config import CRWL_OUTPUT, INDX_OUTPUT, INV_IDX_FILE, INV_IDX_FP
+from src.util.config import CRWL_OUTPUT, INDX_OUTPUT, INV_IDX_FP
 from bs4 import BeautifulSoup
 from pathlib import Path
-import threading, os, re
+import threading
+import os
+import re
+from math import log10
 import nltk
 from nltk.corpus import stopwords
 
@@ -77,6 +80,19 @@ class Index:
         self.corpus_size = idx_obj["corpus_size"]
         self.inverted_index = idx_obj["inverted_index"]
 
+    def get_idf(self, term: str):
+        if term not in self.inverted_index:
+            return 0
+
+        n = self.corpus_size
+        df = len(self.inverted_index[term])
+
+        idf = log10(n / df)
+        return idf
+
+    def get_tf(self, term: str, doc: str):
+        return len(self.inverted_index[term][doc])
+
 
 # Attr:
 # https://stackoverflow.com/questions/312443/how-do-i-split-a-list-into-equally-sized-chunks
@@ -133,6 +149,10 @@ if "__main__" == __name__:
     else:
         index_obj.load_index()
 
-    print(index_obj.inverted_index)
+    print(index_obj.get_idf("digimon"))
+
+    for doc in index_obj.inverted_index["digimon"].keys():
+        curr_tf = index_obj.get_tf("digimon", doc)
+        print(f"{doc}: {curr_tf}")
 
     exit(0)
