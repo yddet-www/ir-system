@@ -34,7 +34,6 @@ class Index:
 
         # sort so its not so random for my sake
         docs = sorted((self.corpus_path / "html").iterdir())
-
         self.corpus_size: int = len(docs)
 
         chunk_size = len(docs) // CPU_COUNT
@@ -91,7 +90,54 @@ class Index:
         return idf
 
     def get_tf(self, term: str, doc: str):
+        if term not in self.inverted_index:
+            return 0
+
         return len(self.inverted_index[term][doc])
+
+    def _get_doc_magnitude(self, doc_id: str):
+        magnitude_squared = 0
+
+        # for every term in this document
+        for term in self.inverted_index:
+            if doc_id in self.inverted_index[term]:
+                tf = self.get_tf(term, doc_id)
+                idf = self.get_idf(term)
+                tfidf = tf * idf
+                magnitude_squared += tfidf**2
+
+        return magnitude_squared**0.5  # sqrt
+
+    def cosine_search(self, query_tokens: list[str]):
+        query_vector = {}
+        for term in query_tokens:
+            if term in self.inverted_index:
+                tf = query_tokens.count(term)
+                idf = self.get_idf(term)
+                query_vector[term] = tf * idf
+
+        doc_scores: dict[str, float] = {}
+        for term in query_vector:
+            for doc_id in self.inverted_index[term]:
+                # doc vector component
+                doc_tf = self.get_tf(term, doc_id)
+                doc_tfidf = doc_tf * self.get_idf(term)
+
+                # dot product component
+                doc_scores[doc_id] = (
+                    doc_scores.get(doc_id, 0) + query_vector[term] * doc_tfidf
+                )
+
+        query_magnitude = sum(v**2 for v in query_vector.values()) ** 0.5
+
+        # normalizing
+        for doc_id in doc_scores:
+            doc_magnitude = self._get_doc_magnitude(doc_id)
+            doc_scores[doc_id] /= query_magnitude * doc_magnitude
+
+        # best to worst
+        ranked = sorted(doc_scores.items(), key=lambda x: x[1], reverse=True)
+        return ranked
 
 
 # Attr:
@@ -151,8 +197,6 @@ if "__main__" == __name__:
 
     print(index_obj.get_idf("digimon"))
 
-    for doc in index_obj.inverted_index["digimon"].keys():
-        curr_tf = index_obj.get_tf("digimon", doc)
-        print(f"{doc}: {curr_tf}")
+    result = index_obj.cosine_search(["digimon", "story"])
 
     exit(0)
