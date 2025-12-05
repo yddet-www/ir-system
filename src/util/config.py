@@ -11,4 +11,10 @@ INV_IDX_FILE = "inverted_index.json"
 INDX_OUTPUT = INDX_DIR / "output"
 INV_IDX_FP = INDX_OUTPUT / INV_IDX_FILE
 
+SRCH_DIR = Path(__file__).parent.parent / "search"
+SRCH_QUERY_FILE = "query_map.csv"
+SRCH_LOGS = SRCH_DIR / "logs"
+SRCH_LOGS_FP = SRCH_LOGS / SRCH_QUERY_FILE
+
+
 QPROC_DIR = Path(__file__).parent.parent / "processor"

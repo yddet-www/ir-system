@@ -1,6 +1,8 @@
 # My ignores
 .*
-src/web-crawler/output/
+src/web-crawler/output/*
+src/indexer/output/* 
+src/search/logs/* 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

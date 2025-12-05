@@ -22,6 +22,13 @@ except LookupError:
 class Index:
     def __init__(self, idx_file: str):
         self.index_path: Path = INDX_OUTPUT / idx_file
+        self._magnitude_cache = {}  # inshallah this speeds up cosine search
+
+        if not self.index_path.exists():
+            print(f"No inverted index found @ {str(INV_IDX_FP)}, creating one...")
+            self.create_index(str(CRWL_OUTPUT))
+        else:
+            self.load_index()
 
     def create_index(self, corpus_path):
         if self.index_path.exists():
@@ -52,6 +59,9 @@ class Index:
             t.join()
 
         self.inverted_index: dict[str, dict[str, list[int]]] = init_invidx_tfdf(doc_idx)
+        self.bigram_index: dict[str, list[str]] = init_bigram_idx(
+            list(self.inverted_index.keys())
+        )
         Path(INDX_OUTPUT).mkdir(parents=True, exist_ok=True)
 
         with open(self.index_path, "w") as idx_file:
@@ -61,6 +71,7 @@ class Index:
                 "corpus_mapping": str(self.corpus_mapping),
                 "corpus_size": self.corpus_size,
                 "inverted_index": self.inverted_index,
+                "bigram_index": self.bigram_index,
             }
             json.dump(idx_obj, idx_file, indent=2)
 
@@ -78,6 +89,7 @@ class Index:
         self.corpus_mapping = Path(idx_obj["corpus_mapping"])
         self.corpus_size = idx_obj["corpus_size"]
         self.inverted_index = idx_obj["inverted_index"]
+        self.bigram_index = idx_obj["bigram_index"]
 
     def get_idf(self, term: str):
         if term not in self.inverted_index:
@@ -96,6 +108,9 @@ class Index:
         return len(self.inverted_index[term][doc])
 
     def _get_doc_magnitude(self, doc_id: str):
+        if doc_id in self._magnitude_cache:
+            return self._magnitude_cache[doc_id]
+
         magnitude_squared = 0
 
         # for every term in this document
@@ -106,9 +121,12 @@ class Index:
                 tfidf = tf * idf
                 magnitude_squared += tfidf**2
 
-        return magnitude_squared**0.5  # sqrt
+        magnitude = magnitude_squared**0.5  # sqrt
 
-    def cosine_search(self, query_tokens: list[str]):
+        self._magnitude_cache[doc_id] = magnitude  # put in the cache
+        return magnitude
+
+    def cosine_search(self, query_tokens: list[str], k: int = 10):
         query_vector = {}
         for term in query_tokens:
             if term in self.inverted_index:
@@ -137,7 +155,7 @@ class Index:
 
         # best to worst
         ranked = sorted(doc_scores.items(), key=lambda x: x[1], reverse=True)
-        return ranked
+        return ranked[:k]
 
 
 # Attr:
@@ -148,7 +166,7 @@ def chunks(lst, n):
         yield lst[i : i + n]
 
 
-def tokenizer(html_path: str):
+def html_tokenizer(html_path: str):
     p = Path(html_path)
 
     with open(p, "rb") as html:
@@ -164,7 +182,7 @@ def tokenizer(html_path: str):
 
 def ptokenize(html_list: list[Path], doc_idx: dict[str, list[str]]):
     for path in html_list:
-        token_list = tokenizer(str(path))
+        token_list = html_tokenizer(str(path))
         doc_idx[path.stem] = token_list
 
 
@@ -185,18 +203,49 @@ def init_invidx_tfdf(doc_idx: dict[str, list[str]]):
     return inverted_idx
 
 
+def bigram(term: str):
+    gram_set = set()
+    togram = term + "$"
+    curr = "$"
+
+    for char in togram:
+        curr += char
+
+        if not (
+            "$*" == curr or "*$" == curr
+        ):  # Remove k-grams for when the `$` is right beside `*`, i.e., wilcard begins at the beginning or end
+            gram_set.add(curr)
+
+        curr = curr[1:]
+
+    # Filter out wildcard bigrams
+    gram_set = {item for item in gram_set if "*" not in item}
+
+    return gram_set
+
+
+def init_bigram_idx(terms: list[str]):
+    kgram_idx: dict[str, list[str]] = {}
+
+    for t in terms:
+        bigrams = bigram(t)
+
+        for b in bigrams:
+            if b in kgram_idx:
+                kgram_idx[b].append(t)
+            else:
+                kgram_idx.setdefault(b, [t])
+
+    return kgram_idx
+
+
 if "__main__" == __name__:
     index_obj = Index("inverted_index.json")
 
-    if not index_obj.index_path.exists():
-        print(f"No inverted index found @ {str(INV_IDX_FP)}, creating one...")
-        index_obj.create_index(str(CRWL_OUTPUT))
+    bigram_idx = index_obj.bigram_index
 
-    else:
-        index_obj.load_index()
+    # print(index_obj.get_idf("digimon"))
 
-    print(index_obj.get_idf("digimon"))
-
-    result = index_obj.cosine_search(["digimon", "story"])
+    # result = index_obj.cosine_search(["digimon", "story"])
 
     exit(0)
