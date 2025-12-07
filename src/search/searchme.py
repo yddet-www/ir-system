@@ -4,7 +4,7 @@ import csv
 import re
 from nltk import edit_distance
 from src.indexer.indexme import STOPWORDS, Index, bigram
-from src.util.config import SRCH_LOGS, SRCH_LOGS_FP, CRWL_MAP_FP
+from src.util.config import SRCH_LOGS, SRCH_LOGS_FP
 
 
 def tokenizer(query: str):
@@ -59,7 +59,7 @@ def query_correction(query: list[str], bigram_idx: dict[str, list[str]]):
     return corrected_query, correction_flag
 
 
-def get_url_mapping(url_map_fp: Path):
+def get_url_mapping(url_map_fp: Path) -> dict[str, str]:
     if not url_map_fp.exists():
         raise FileNotFoundError(f"Expected file @ {url_map_fp}, but found nothing")
 
@@ -71,6 +71,10 @@ def query_pipeline(query: str, index: Index, url_map: dict[str, str]):
     Path(SRCH_LOGS).mkdir(parents=True, exist_ok=True)
 
     q_tokenized = tokenizer(query)
+
+    if not q_tokenized:
+        raise ValueError("Processed query is empty!")
+
     q_corrected, flag = query_correction(q_tokenized, index.bigram_index)
     q_corrected_str = " ".join(q_corrected)
 
@@ -112,5 +116,9 @@ def query_pipeline(query: str, index: Index, url_map: dict[str, str]):
 
 
 if "__main__" == __name__:
+    whitespace = tokenizer("                 ")
+
+    if not whitespace:
+        raise ValueError("Processed query is empty!")
 
     exit(0)

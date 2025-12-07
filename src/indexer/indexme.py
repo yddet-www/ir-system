@@ -1,6 +1,5 @@
 import json
-from typing import Any
-from src.util.config import CRWL_OUTPUT, INDX_OUTPUT, INV_IDX_FP
+from src.util.config import CRWL_OUTPUT, INDX_OUTPUT, INV_IDX_FILE
 from bs4 import BeautifulSoup
 from pathlib import Path
 import threading
@@ -20,24 +19,32 @@ except LookupError:
 
 
 class Index:
-    def __init__(self, idx_file: str):
+    def __init__(
+        self, idx_file: Path = Path(INV_IDX_FILE), corpus_path: Path = CRWL_OUTPUT
+    ):
         self.index_path: Path = INDX_OUTPUT / idx_file
         self._magnitude_cache = {}  # inshallah this speeds up cosine search
 
         if not self.index_path.exists():
-            print(f"No inverted index found @ {str(INV_IDX_FP)}, creating one...")
-            self.create_index(str(CRWL_OUTPUT))
+            print(f"No inverted index found @ {self.index_path}, creating one...")
+            self.create_index(corpus_path)
         else:
             self.load_index()
 
-    def create_index(self, corpus_path):
+    def create_index(self, corpus_path: Path):
         if self.index_path.exists():
             raise FileExistsError(
                 f"File already exists at {str(self.index_path)}\n     Use load_index() to load file into object instead."
             )
 
-        self.corpus_path: Path = Path(corpus_path)
+        self.corpus_path: Path = corpus_path
         self.corpus_mapping: Path = self.corpus_path / "url_map.jsonl"
+
+        # run the crawler first, moron
+        if not self.corpus_mapping.exists():
+            raise FileNotFoundError(
+                f'Expected a "url_map.jsonl" file at @ {self.corpus_mapping}, found none'
+            )
 
         # sort so its not so random for my sake
         docs = sorted((self.corpus_path / "html").iterdir())
@@ -240,12 +247,6 @@ def init_bigram_idx(terms: list[str]):
 
 
 if "__main__" == __name__:
-    index_obj = Index("inverted_index.json")
-
-    bigram_idx = index_obj.bigram_index
-
-    # print(index_obj.get_idf("digimon"))
-
-    # result = index_obj.cosine_search(["digimon", "story"])
+    index_obj = Index(Path("inverted_index.json"))
 
     exit(0)

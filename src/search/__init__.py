@@ -1,9 +1,8 @@
 import os
-
+from pathlib import Path
 from flask import Flask, render_template, request, flash
 from src.indexer.indexme import Index
 from src.search.searchme import query_pipeline, get_url_mapping
-from util.config import CRWL_MAP_FP
 
 
 def create_app(test_config=None):
@@ -28,24 +27,50 @@ def create_app(test_config=None):
         pass
 
     # load inverted index
-    index_obj = Index("inverted_index.json")
-    url_map = get_url_mapping(CRWL_MAP_FP)
+    index_obj = Index(Path("inverted_index.json"))
+    url_map = get_url_mapping(index_obj.corpus_mapping)
 
     # a simple page that says hello
     @app.route("/", methods=["GET", "POST"])
     def index():
+        original_query = None
+        corrected_query = None
+        was_corrected = False
+        results = None
+        error = None
+
         if request.method == "POST":
-            query = request.form.get("query", type=str)
+            query = request.form.get("query", "").strip()
+            original_query = query
 
             if not query:
-                flash("Please provide a query!")
+                error = "Please provide a query!"
             else:
-                doc_list = query_pipeline(query, index_obj, url_map)
-                print(doc_list)
+                try:
+                    documents, q_corrected, flag = query_pipeline(
+                        query, index_obj, url_map
+                    )
 
-            print(f"USER QUERRY: {query}")
+                    results = [
+                        (doc_id, score, url_map[doc_id]) for doc_id, score in documents
+                    ]
+
+                    corrected_query = " ".join(q_corrected)
+                    was_corrected = flag
+                    print(f"USER QUERY: {query}")
+                    print(f"RESULTS: {len(results)} documents found")
+                except ValueError as e:
+                    error = str(e)
+                except Exception as e:
+                    error = f"An error occurred: {str(e)}"
+
         return render_template(
             "index.html",
+            results=results,
+            query=original_query,
+            corrected_query=corrected_query,
+            was_corrected=was_corrected,
+            error=error,
         )
 
     return app

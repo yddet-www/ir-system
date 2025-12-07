@@ -12,6 +12,7 @@ class WebSpider(scrapy.Spider):
     # default paths
     default_output_path = "output"
     default_url_file = "url.txt"
+    allowed_domains = ["en.wikipedia.org"]
 
     custom_settings: dict[str, Any] = {
         "DEPTH_LIMIT": 3,
@@ -34,6 +35,7 @@ class WebSpider(scrapy.Spider):
 
     link_extractor = LinkExtractor(
         process_value=only_http_https,
+        allow_domains=["en.wikipedia.org"],
         deny=[
             r"/user/",
             r"/profile/",

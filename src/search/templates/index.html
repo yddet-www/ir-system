@@ -2,55 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Predict Housing Price</title>
-
-    <!-- DISCLAIMER: I USED AI -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Searchme</title>
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: Arial, sans-serif;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        min-height: 100vh;
         background-color: #f5f5f5;
+        padding: 2rem;
       }
-
-      main {
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      header {
         text-align: center;
-      }
-
-      h1 {
         margin-bottom: 2rem;
+      }
+      h1 {
         font-size: 2.5rem;
         color: #333;
+        margin-bottom: 1rem;
       }
-
       form {
         display: flex;
         gap: 0.5rem;
         justify-content: center;
+        margin-bottom: 2rem;
       }
-
       input[type="search"] {
         padding: 0.75rem 1rem;
         font-size: 1rem;
         border: 2px solid #ddd;
         border-radius: 4px;
-        width: 300px;
+        width: 500px;
         outline: none;
         transition: border-color 0.3s;
       }
-
       input[type="search"]:focus {
         border-color: #4caf50;
       }
-
       .btn {
         padding: 0.75rem 1.5rem;
         font-size: 1rem;
@@ -61,24 +57,135 @@
         cursor: pointer;
         transition: background-color 0.3s;
       }
-
       .btn:hover {
         background-color: #45a049;
+      }
+      .error {
+        background-color: #f44336;
+        color: white;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .correction-notice {
+        background-color: #fff3cd;
+        color: #856404;
+        padding: 0.75rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        text-align: center;
+        border: 1px solid #ffeaa7;
+      }
+      .results-info {
+        color: #666;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+      .results {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .result-item {
+        padding: 1.25rem;
+        border-bottom: 1px solid #eee;
+        transition: background-color 0.2s;
+      }
+      .result-item:last-child {
+        border-bottom: none;
+      }
+      .result-item:hover {
+        background-color: #f9f9f9;
+      }
+      .result-url {
+        color: #4caf50;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 0.5rem;
+        word-break: break-all;
+      }
+      .result-url:hover {
+        text-decoration: underline;
+      }
+      .result-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: #666;
+      }
+      .result-score {
+        background-color: #e8f5e9;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-weight: 500;
+      }
+      .result-docid {
+        font-family: monospace;
+        background-color: #f5f5f5;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+      }
+      .no-results {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>Searchme</h1>
-      <form action="/" method="post">
-        <input
-          type="search"
-          name="query"
-          placeholder="What are you looking for?"
-          required
-        />
-        <button class="btn" type="submit">Search</button>
-      </form>
-    </main>
+    <div class="container">
+      <header>
+        <h1>Searchme</h1>
+        <form action="/" method="post">
+          <input
+            type="search"
+            name="query"
+            placeholder="What are you looking for?"
+            value="{{ query or '' }}"
+            required
+          />
+          <button class="btn" type="submit">Search</button>
+        </form>
+      </header>
+
+      <main>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %} {% if was_corrected %}
+        <div class="correction-notice">
+          Did you mean: <strong>{{ corrected_query }}</strong>?
+        </div>
+        {% endif %} {% if results is not none %} {% if results %}
+        <div class="results-info">
+          Found {{ results|length }} result(s) for "{{ query }}"
+        </div>
+        <div class="results">
+          {% for doc_id, score, url in results %}
+          <div class="result-item">
+            <a href="{{ url }}" target="_blank" class="result-url">
+              {{ url }}
+            </a>
+            <div class="result-meta">
+              <span class="result-score"
+                >Score: {{ "%.4f"|format(score) }}</span
+              >
+              <span class="result-docid">{{ doc_id[:8] }}...</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-results">
+          <p>No results found for "{{ query }}"</p>
+          <p style="margin-top: 0.5rem; font-size: 0.9rem">
+            Try different keywords or check your spelling.
+          </p>
+        </div>
+        {% endif %} {% endif %}
+      </main>
+    </div>
   </body>
 </html>

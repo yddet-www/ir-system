@@ -1,0 +1,8 @@
+{
+  "index_path": "C:\\Users\\bloon\\Desktop\\projects\\ir-system\\tests\\fixtures\\indexer\\inverted_index.json",
+  "corpus_path": "C:\\Users\\bloon\\Desktop\\projects\\ir-system\\tests\\fixtures\\web-crawler\\output",
+  "corpus_mapping": "C:\\Users\\bloon\\Desktop\\projects\\ir-system\\tests\\fixtures\\web-crawler\\output\\url_map.jsonl",
+  "corpus_size": 1400,
+  "inverted_index": {},
+  "bigram_index": {}
+}
