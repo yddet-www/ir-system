@@ -162,7 +162,11 @@ class Index:
 
         # best to worst
         ranked = sorted(doc_scores.items(), key=lambda x: x[1], reverse=True)
-        return ranked[:k]
+
+        if k > len(ranked):
+            return ranked
+        else:
+            return ranked[:k]
 
 
 # Attr:
